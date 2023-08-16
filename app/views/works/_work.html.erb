@@ -29,9 +29,11 @@
                 <i class="bi bi-trash-fill text-danger fs-5 px-1"></i>
               <% end %>
             <% end %>
-            <%= button_to "Postular", { controller: "postulations", 
-              action: "create", user_id: current_user.id, work_id: @work.id }, method: :post, 
-              class: "btn btn-sm btn-success fw-semibold text-white" %>
+            <% if !current_user.admin? %>
+              <%= button_to "Postular", { controller: "postulations", 
+                action: "create", user_id: current_user.id, work_id: @work.id }, method: :post, 
+                class: "btn btn-sm btn-success fw-semibold text-white" %>
+            <% end %>
           <% end %>
         </div>
       <% end %>

@@ -1,9 +1,10 @@
-<h1>New work</h1>
+<div class="d-flex align-items-center">
+  <div class="col-1 px-0" style="width: 35px">
+    <%= link_to works_path do %>
+      <i class="bi bi-arrow-return-left text-secondary fs-5"></i>
+    <% end %>
+  </div>
+  <h1>Nueva Oferta de Trabajo</h1>
+</div>
 
 <%= render "form", work: @work %>
-
-<br>
-
-<div>
-  <%= link_to "Back to works", works_path %>
-</div>
