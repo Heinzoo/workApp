@@ -1,0 +1,40 @@
+<div id="<%= dom_id work %>" class="col-4 py-2">
+  <div class="card text-center border-success">
+    <div class="card-header d-flex justify-content-around">
+      <h5 class="card-title fw-bold">
+        <%= work.title %>
+      </h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text fst-italic">
+        <%= work.description %>
+      </p>
+    </div>
+    <div class="card-footer">
+      <% if action_name == 'index' %>
+        <%= link_to work do %>
+          <i class="bi bi-eye-fill text-primary fs-5"></i>
+        <% end %>
+      <% else %>
+        <div class="d-flex justify-content-around">
+          <%= link_to works_path do %>
+            <i class="bi bi-arrow-return-left text-secondary fs-5 px-1"></i>
+          <% end %>
+          <% if user_signed_in? %>
+            <% if current_user.id == @work.user_id %>
+              <%= link_to edit_work_path(work) do %>
+                <i class="bi bi-pencil-fill text-success fs-5 px-1"></i>
+              <% end %>
+              <%= button_to @work, method: :delete, style: "all: unset; cursor: pointer" do %>
+                <i class="bi bi-trash-fill text-danger fs-5 px-1"></i>
+              <% end %>
+            <% end %>
+            <%= button_to "Postular", { controller: "postulations", 
+              action: "create", user_id: current_user.id, work_id: @work.id }, method: :post, 
+              class: "btn btn-sm btn-success fw-semibold text-white" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

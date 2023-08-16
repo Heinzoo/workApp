@@ -1,0 +1,40 @@
+<div id="<%= dom_id postulation %>" class="col-4 py-2">
+  <div class="card text-center border-success">
+    <div class="card-header d-flex justify-content-around">
+      <h5 class="card-title fw-bold">
+        <%= postulation.work.title %>
+      </h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text fst-italic">
+        <%= postulation.work.description %>
+      </p>
+    </div>
+    <% if current_user.admin? %>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Datos del Postulante
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <img src="<%= postulation.user.images[0].url %>" class="rounded ms-2" style="width: 100px">
+              <p class="card-text fst-italic m-0 p-0">
+                Postulante: <%= postulation.user.name %>
+              </p>
+              <p class="card-text fst-italic m-0 p-0">
+                Edad: <%= postulation.user.age %>
+              </p>
+              <p class="card-text fst-italic m-0 p-0">
+                Descripción: <%= postulation.user.description %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
